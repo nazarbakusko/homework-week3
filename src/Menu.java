@@ -3,6 +3,12 @@ import java.util.Scanner;
 
 public class Menu {
 
+    private static final int EXIT = 0;
+    private static final int ADD = 1;
+    private static final int CHOOSE = 2;
+    private static final int REMOVE = 3;
+    private static final int UPDATE = 4;
+
     public static void  displayMenu() {
         System.out.println("--------Menu--------");
         System.out.println(" 1 - Add student");
@@ -19,12 +25,12 @@ public class Menu {
         while (scanner.hasNextInt()) {
             int choose = scanner.nextInt();
             switch (choose) {
-                case 0: {
+                case EXIT: {
                     System.out.println("BYE");
                    System.exit(0);
                    break;
                 }
-                case 1: {
+                case ADD: {
                     System.out.println("ADD STUDENT");
                     System.out.println("Enter student`s id");
                     int id = scanner.nextInt();
@@ -38,34 +44,34 @@ public class Menu {
 
                     System.out.println("Enter student`s birthday year");
                     int year = scanner.nextInt();
-                    Array.add(id, sur, name, year);
-                    System.out.println(Arrays.toString(Array.getArr()));
+                    School.add(id, sur, name, year);
+                    System.out.println(Arrays.toString(School.getArr()));
                     displayMenu();
                     break;
                 }
 
-                case 2: {
+                case CHOOSE: {
                     System.out.println("CHOOSE STUDENT");
                     System.out.println("Enter student`s id");
                     int id = scanner.nextInt();
                     System.out.println("Student with chosen id: ");
-                    Array.search(id);
+                    School.search(id);
                     displayMenu();
                     break;
                 }
 
-                case 3: {
+                case REMOVE: {
                     System.out.println("REMOVE STUDENT");
                     System.out.println("Enter student`s id");
                     int id = scanner.nextInt();
-                    Array.removeById(id);
+                    School.removeById(id);
                     System.out.println("REMOVED");
-                    System.out.println(Arrays.toString(Array.getArr()));
+                    System.out.println(Arrays.toString(School.getArr()));
                     displayMenu();
                     break;
                 }
 
-                case 4: {
+                case UPDATE: {
                     System.out.println("UPDATE STUDENT");
                     System.out.println("Enter student`s id");
                     int id = scanner.nextInt();
@@ -79,9 +85,9 @@ public class Menu {
 
                     System.out.println("Enter student`s birthday year");
                     int year = scanner.nextInt();
-                    Array.set(id, surname, name, year);
+                    School.set(id, surname, name, year);
                     System.out.println("UPDATED");
-                    System.out.println(Arrays.toString(Array.getArr()));
+                    System.out.println(Arrays.toString(School.getArr()));
                     displayMenu();
                     break;
                 }
